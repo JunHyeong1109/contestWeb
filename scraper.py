@@ -154,45 +154,12 @@ def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
 
 
 # ─────────────────────────────────────────────────────────────
-# 2. 콘테스트코리아 - IT 대외활동 (int_gbn=2)
-# ─────────────────────────────────────────────────────────────
-def scrape_contestkorea_activity(pages: int = 3) -> list[dict]:
-    results = []
-    urls_template = [
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_bcode=040810001&page={{page}}",  # IT·SW 대외활동
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&Txt_word=IT&page={{page}}",
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&Txt_word=AI&page={{page}}",
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&Txt_word=SW&page={{page}}",
-    ]
-    seen_urls = set()
-    for url_tmpl in urls_template:
-        for page in range(1, pages + 1):
-            url = url_tmpl.format(page=page)
-            resp = _get(url)
-            if not resp:
-                continue
-            soup = BeautifulSoup(resp.text, "html.parser")
-            items = _parse_ck_list(soup, "콘테스트코리아-대외활동")
-            if not items:
-                break
-            for item in items:
-                if item["url"] not in seen_urls and _is_it_related(item):
-                    seen_urls.add(item["url"])
-                    results.append(item)
-            time.sleep(0.6)
-
-    print(f"[콘테스트코리아-대외활동] {len(results)}건 수집 (IT 필터 적용)")
-    return results
-
-
-# ─────────────────────────────────────────────────────────────
 # 통합 실행
 # ─────────────────────────────────────────────────────────────
 def run_all_scrapers() -> list[dict]:
     all_results = []
     scrapers = [
         ("콘테스트코리아-공모전", scrape_contestkorea_contest),
-        ("콘테스트코리아-대외활동", scrape_contestkorea_activity),
     ]
     for name, fn in scrapers:
         try:
