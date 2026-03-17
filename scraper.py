@@ -3,9 +3,9 @@
 - 콘테스트코리아: IT 카테고리 전용 URL
 """
 
-import time
 import requests
 from bs4 import BeautifulSoup
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # IT/컴퓨터공학 관련 키워드 (제목·카테고리·주최에 하나라도 포함되면 통과)
 IT_KEYWORDS = [
@@ -120,34 +120,37 @@ def _parse_ck_list(soup: BeautifulSoup, source_name: str) -> list[dict]:
 # ─────────────────────────────────────────────────────────────
 # 1. 콘테스트코리아 - IT 공모전 (Txt_bcode=030310001: 학문·과학·IT)
 # ─────────────────────────────────────────────────────────────
+def _fetch_page(url: str) -> list[dict]:
+    resp = _get(url)
+    if not resp:
+        return []
+    soup = BeautifulSoup(resp.text, "html.parser")
+    return _parse_ck_list(soup, "콘테스트코리아")
+
+
 def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
-    results = []
-    # IT 카테고리 전용 URL + 전체 목록 IT 키워드 필터 병행
     urls_template = [
-        # IT 전용 카테고리
         f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_bcode=030310001&page={{page}}",
-        # 전체 공모전 (IT 키워드로 재검색)
         f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=IT&page={{page}}",
         f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=SW&page={{page}}",
         f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=AI&page={{page}}",
         f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4&page={{page}}",
     ]
+    all_urls = [
+        tmpl.format(page=page)
+        for tmpl in urls_template
+        for page in range(1, pages + 1)
+    ]
+
     seen_urls = set()
-    for url_tmpl in urls_template:
-        for page in range(1, pages + 1):
-            url = url_tmpl.format(page=page)
-            resp = _get(url)
-            if not resp:
-                continue
-            soup = BeautifulSoup(resp.text, "html.parser")
-            items = _parse_ck_list(soup, "콘테스트코리아")
-            if not items:
-                break
-            for item in items:
+    results = []
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {executor.submit(_fetch_page, url): url for url in all_urls}
+        for future in as_completed(futures):
+            for item in future.result():
                 if item["url"] not in seen_urls and _is_it_related(item):
                     seen_urls.add(item["url"])
                     results.append(item)
-            time.sleep(0.6)
 
     print(f"[콘테스트코리아-공모전] {len(results)}건 수집 (IT 필터 적용)")
     return results
