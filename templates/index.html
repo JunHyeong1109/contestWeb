@@ -397,9 +397,9 @@
   </div>
 
   <!-- Contest grid -->
-  {% if data.items %}
+  {% if data['items'] %}
     <div class="grid">
-      {% for c in data.items %}
+      {% for c in data['items'] %}
         <div class="card">
           {% if c.thumbnail %}
             <img class="card-thumb" src="{{ c.thumbnail }}" alt="{{ c.title }}"
@@ -487,10 +487,33 @@
     setTimeout(() => t.classList.remove('show'), duration);
   }
 
+  const COOLDOWN_MS = 60000; // 1분
+  const COOLDOWN_KEY = 'scrape_cooldown_until';
+
+  function updateCooldown() {
+    const btn = document.getElementById('scrapeBtn');
+    const until = parseInt(localStorage.getItem(COOLDOWN_KEY) || '0');
+    const remaining = until - Date.now();
+    if (remaining > 0) {
+      btn.disabled = true;
+      btn.textContent = `⏳ ${Math.ceil(remaining / 1000)}초 후 가능`;
+      setTimeout(updateCooldown, 1000);
+    } else {
+      btn.disabled = false;
+      btn.textContent = '🔄 지금 갱신하기';
+    }
+  }
+
+  // 페이지 로드 시 쿨타임 복원
+  updateCooldown();
+
   async function triggerScrape() {
     const btn = document.getElementById('scrapeBtn');
+    const until = parseInt(localStorage.getItem(COOLDOWN_KEY) || '0');
+    if (Date.now() < until) return;
+
+    localStorage.setItem(COOLDOWN_KEY, Date.now() + COOLDOWN_MS);
     btn.disabled = true;
-    btn.textContent = '⏳ 수집 중...';
     showToast('스크래핑을 시작했습니다. 완료 후 새로고침 해주세요.', 5000);
 
     try {
@@ -501,12 +524,7 @@
       showToast('오류가 발생했습니다.', 3000);
     }
 
-    // 20초 후 자동 새로고침
-    setTimeout(() => location.reload(), 20000);
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.textContent = '🔄 지금 갱신하기';
-    }, 20000);
+    updateCooldown();
   }
 </script>
 

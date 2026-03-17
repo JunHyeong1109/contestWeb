@@ -1,12 +1,33 @@
 """
-공모전 스크래퍼
-- 콘테스트코리아 (contestkorea.com) ← 공모전/대외활동, SSR 안정적
-- 링커리어 (api.linkareer.com)      ← GraphQL API
+공모전 스크래퍼 (IT/컴퓨터공학 관련만 수집)
+- 콘테스트코리아: IT 카테고리 전용 URL
 """
 
 import time
 import requests
 from bs4 import BeautifulSoup
+
+# IT/컴퓨터공학 관련 키워드 (제목·카테고리·주최에 하나라도 포함되면 통과)
+IT_KEYWORDS = [
+    "IT", "SW", "AI", "소프트웨어", "프로그래밍", "코딩", "개발",
+    "컴퓨터", "알고리즘", "데이터", "빅데이터", "클라우드", "인공지능",
+    "머신러닝", "딥러닝", "웹", "앱", "모바일", "보안", "사이버",
+    "해킹", "블록체인", "IoT", "핀테크", "디지털", "스마트", "게임",
+    "네트워크", "데이터베이스", "임베디드", "로봇", "자율주행",
+    "메타버스", "AR", "VR", "챗봇", "자연어", "컴퓨터공학", "정보보안",
+    "정보통신", "전산", "ICT",
+]
+
+
+def _is_it_related(item: dict) -> bool:
+    """IT/CS 관련 여부를 제목·카테고리·주최 텍스트로 판단"""
+    target = " ".join([
+        item.get("title", ""),
+        item.get("category", ""),
+        item.get("host", ""),
+    ]).upper()
+    return any(kw.upper() in target for kw in IT_KEYWORDS)
+
 
 HEADERS = {
     "User-Agent": (
@@ -97,145 +118,71 @@ def _parse_ck_list(soup: BeautifulSoup, source_name: str) -> list[dict]:
 
 
 # ─────────────────────────────────────────────────────────────
-# 1. 콘테스트코리아 - 공모전 (int_gbn=1)
+# 1. 콘테스트코리아 - IT 공모전 (Txt_bcode=030310001: 학문·과학·IT)
 # ─────────────────────────────────────────────────────────────
 def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
     results = []
-    for page in range(1, pages + 1):
-        url = (
-            f"{BASE_CK}/sub/list.php"
-            f"?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&page={page}"
-        )
-        resp = _get(url)
-        if not resp:
-            continue
+    # IT 카테고리 전용 URL + 전체 목록 IT 키워드 필터 병행
+    urls_template = [
+        # IT 전용 카테고리
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_bcode=030310001&page={{page}}",
+        # 전체 공모전 (IT 키워드로 재검색)
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=IT&page={{page}}",
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=SW&page={{page}}",
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=AI&page={{page}}",
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4&page={{page}}",
+    ]
+    seen_urls = set()
+    for url_tmpl in urls_template:
+        for page in range(1, pages + 1):
+            url = url_tmpl.format(page=page)
+            resp = _get(url)
+            if not resp:
+                continue
+            soup = BeautifulSoup(resp.text, "html.parser")
+            items = _parse_ck_list(soup, "콘테스트코리아")
+            if not items:
+                break
+            for item in items:
+                if item["url"] not in seen_urls and _is_it_related(item):
+                    seen_urls.add(item["url"])
+                    results.append(item)
+            time.sleep(0.6)
 
-        soup = BeautifulSoup(resp.text, "html.parser")
-        items = _parse_ck_list(soup, "콘테스트코리아")
-        if not items:
-            break
-        results.extend(items)
-        time.sleep(0.6)
-
-    print(f"[콘테스트코리아-공모전] {len(results)}건 수집")
+    print(f"[콘테스트코리아-공모전] {len(results)}건 수집 (IT 필터 적용)")
     return results
 
 
 # ─────────────────────────────────────────────────────────────
-# 2. 콘테스트코리아 - 대외활동 (int_gbn=2)
+# 2. 콘테스트코리아 - IT 대외활동 (int_gbn=2)
 # ─────────────────────────────────────────────────────────────
 def scrape_contestkorea_activity(pages: int = 3) -> list[dict]:
     results = []
-    for page in range(1, pages + 1):
-        url = (
-            f"{BASE_CK}/sub/list.php"
-            f"?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&page={page}"
-        )
-        resp = _get(url)
-        if not resp:
-            continue
-
-        soup = BeautifulSoup(resp.text, "html.parser")
-        items = _parse_ck_list(soup, "콘테스트코리아-대외활동")
-        if not items:
-            break
-        results.extend(items)
-        time.sleep(0.6)
-
-    print(f"[콘테스트코리아-대외활동] {len(results)}건 수집")
-    return results
-
-
-# ─────────────────────────────────────────────────────────────
-# 3. 링커리어 - GraphQL API
-#    activityTypeID=3 → 공모전, =1 → 대외활동
-# ─────────────────────────────────────────────────────────────
-def _linkareer_fetch(type_id: int, source_name: str) -> list[dict]:
-    api_url = "https://api.linkareer.com/graphql"
-    headers = {
-        **HEADERS,
-        "Content-Type": "application/json",
-        "Origin": "https://linkareer.com",
-        "Referer": "https://linkareer.com/",
-    }
-    query = """
-    query($filterBy: ActivityFilter, $orderBy: ActivityOrder) {
-        activities(filterBy: $filterBy, orderBy: $orderBy) {
-            totalCount
-            nodes {
-                id
-                title
-                organizationName
-                deadlineStatus
-                activityType { name }
-                posterImage { url }
-            }
-        }
-    }
-    """
-    variables = {
-        "filterBy": {"activityTypeID": type_id},
-        "orderBy": {"field": "CREATED_AT", "direction": "DESC"},
-    }
-    try:
-        resp = requests.post(
-            api_url,
-            json={"query": query, "variables": variables},
-            headers=headers,
-            timeout=TIMEOUT,
-        )
-        data = resp.json()
-        if "errors" in data:
-            print(f"[{source_name}] GraphQL 오류: {data['errors'][0]['message']}")
-            return []
-
-        nodes = data.get("data", {}).get("activities", {}).get("nodes", [])
-        results = []
-        for node in nodes:
-            # REJECTED(마감/반려) 제외
-            if node.get("deadlineStatus") in ("REJECTED", "CLOSED"):
+    urls_template = [
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_bcode=040810001&page={{page}}",  # IT·SW 대외활동
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&Txt_word=IT&page={{page}}",
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&Txt_word=AI&page={{page}}",
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=2&Txt_sGn=1&Txt_key=all&Txt_word=SW&page={{page}}",
+    ]
+    seen_urls = set()
+    for url_tmpl in urls_template:
+        for page in range(1, pages + 1):
+            url = url_tmpl.format(page=page)
+            resp = _get(url)
+            if not resp:
                 continue
+            soup = BeautifulSoup(resp.text, "html.parser")
+            items = _parse_ck_list(soup, "콘테스트코리아-대외활동")
+            if not items:
+                break
+            for item in items:
+                if item["url"] not in seen_urls and _is_it_related(item):
+                    seen_urls.add(item["url"])
+                    results.append(item)
+            time.sleep(0.6)
 
-            link = f"https://linkareer.com/activity/{node.get('id', '')}"
-            thumb = ""
-            poster = node.get("posterImage") or {}
-            if poster.get("url"):
-                thumb = poster["url"]
-
-            results.append({
-                "title": node.get("title", ""),
-                "url": link,
-                "source": source_name,
-                "category": (node.get("activityType") or {}).get("name", ""),
-                "deadline": "",
-                "host": node.get("organizationName", ""),
-                "prize": "",
-                "thumbnail": thumb,
-            })
-        return results
-
-    except Exception as e:
-        print(f"[{source_name}] 오류: {e}")
-        return []
-
-
-def scrape_linkareer() -> list[dict]:
-    results = []
-    # 공모전 (typeID=3)
-    results.extend(_linkareer_fetch(3, "링커리어-공모전"))
-    time.sleep(0.5)
-    # 대외활동 (typeID=1)
-    results.extend(_linkareer_fetch(1, "링커리어-대외활동"))
-
-    # URL 중복 제거
-    seen, deduped = set(), []
-    for r in results:
-        if r["url"] not in seen:
-            seen.add(r["url"])
-            deduped.append(r)
-
-    print(f"[링커리어] {len(deduped)}건 수집")
-    return deduped
+    print(f"[콘테스트코리아-대외활동] {len(results)}건 수집 (IT 필터 적용)")
+    return results
 
 
 # ─────────────────────────────────────────────────────────────
@@ -246,7 +193,6 @@ def run_all_scrapers() -> list[dict]:
     scrapers = [
         ("콘테스트코리아-공모전", scrape_contestkorea_contest),
         ("콘테스트코리아-대외활동", scrape_contestkorea_activity),
-        ("링커리어", scrape_linkareer),
     ]
     for name, fn in scrapers:
         try:

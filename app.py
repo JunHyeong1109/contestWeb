@@ -107,7 +107,7 @@ def api_status():
 
 
 # ─── 앱 시작 ─────────────────────────────────────────────────
-def create_app():
+def _bootstrap():
     db.init_db()
 
     with db.get_conn() as conn:
@@ -118,15 +118,16 @@ def create_app():
         t = threading.Thread(target=scheduled_scrape, daemon=True)
         t.start()
 
-    scheduler.start()
-    print("[스케줄러] 매일 오전 8시(KST) 자동 갱신 설정 완료")
-    return app
+    if not scheduler.running:
+        scheduler.start()
+        print("[스케줄러] 매일 오전 8시(KST) 자동 갱신 설정 완료")
 
+
+_bootstrap()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
-    create_app().run(host="0.0.0.0", port=port, debug=False)
-
+    app.run(host="0.0.0.0", port=port, debug=False)
 
 # Gunicorn/Render 진입점
-application = create_app()
+application = app
