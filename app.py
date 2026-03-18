@@ -37,6 +37,8 @@ scheduler.add_job(
     CronTrigger(hour=8, minute=0, timezone="Asia/Seoul"),
     id="daily_scrape",
     replace_existing=True,
+    misfire_grace_time=3600,  # 1시간 이내 missed job 허용
+    coalesce=True,            # 여러 번 missed 시 한 번만 실행
 )
 
 

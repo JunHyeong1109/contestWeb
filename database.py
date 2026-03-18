@@ -1,7 +1,13 @@
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 DB_PATH = "contests.db"
+KST_OFFSET = timedelta(hours=9)
+
+
+def _now_kst() -> str:
+    """현재 한국 시간(KST) 문자열 반환"""
+    return (datetime.now(timezone.utc) + KST_OFFSET).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def get_conn():
@@ -41,7 +47,7 @@ def init_db():
 def upsert_contests(contests: list[dict]) -> int:
     """Insert new contests, skip duplicates. Returns count of newly added."""
     added = 0
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = _now_kst()
     with get_conn() as conn:
         for c in contests:
             try:
@@ -62,7 +68,7 @@ def upsert_contests(contests: list[dict]) -> int:
 
 
 def log_scrape(total: int, added: int, status: str):
-    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now = _now_kst()
     with get_conn() as conn:
         conn.execute(
             "INSERT INTO scrape_log (run_at, total, added, status) VALUES (?, ?, ?, ?)",

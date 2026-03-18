@@ -3,9 +3,56 @@
 - 콘테스트코리아: IT 카테고리 전용 URL
 """
 
+import re
 import requests
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import date, datetime, timezone, timedelta
+
+KST_OFFSET = timedelta(hours=9)
+
+
+def _today_kst() -> date:
+    """현재 한국 날짜(KST) 반환"""
+    return (datetime.now(timezone.utc) + KST_OFFSET).date()
+
+
+def _parse_deadline_date(text: str):
+    """deadline 텍스트에서 date 객체 추출. 실패시 None."""
+    if not text:
+        return None
+    clean = re.sub(r"[가-힣\s접수모집]", "", text)
+
+    # YYYY.MM.DD 또는 YYYY-MM-DD
+    m = re.search(r"(\d{4})[.\-/](\d{1,2})[.\-/](\d{1,2})", clean)
+    if m:
+        try:
+            return date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            pass
+
+    # MM.DD (연도 없음) → 올해 or 내년
+    m = re.search(r"(\d{1,2})[.\-/](\d{2})$", clean)
+    if m:
+        today = _today_kst()
+        try:
+            d = date(today.year, int(m.group(1)), int(m.group(2)))
+            if d < today:
+                d = date(today.year + 1, int(m.group(1)), int(m.group(2)))
+            return d
+        except ValueError:
+            pass
+
+    return None
+
+
+def _is_expired(deadline_text: str) -> bool:
+    """마감일이 오늘(KST)보다 이전이면 True (날짜 파싱 실패 시 False = 통과)"""
+    d = _parse_deadline_date(deadline_text)
+    if d is None:
+        return False
+    return d < _today_kst()
+
 
 # IT/컴퓨터공학 관련 키워드 (제목·카테고리·주최에 하나라도 포함되면 통과)
 IT_KEYWORDS = [
@@ -148,11 +195,13 @@ def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
         futures = {executor.submit(_fetch_page, url): url for url in all_urls}
         for future in as_completed(futures):
             for item in future.result():
-                if item["url"] not in seen_urls and _is_it_related(item):
+                if (item["url"] not in seen_urls
+                        and _is_it_related(item)
+                        and not _is_expired(item.get("deadline", ""))):
                     seen_urls.add(item["url"])
                     results.append(item)
 
-    print(f"[콘테스트코리아-공모전] {len(results)}건 수집 (IT 필터 적용)")
+    print(f"[콘테스트코리아-공모전] {len(results)}건 수집 (IT 필터 + 만료 제외)")
     return results
 
 
