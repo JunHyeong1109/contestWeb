@@ -1,1 +1,1 @@
-https://contestweb.onrender.com
+http://contestjh.com/
