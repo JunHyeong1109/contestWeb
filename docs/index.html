@@ -348,6 +348,28 @@
   let filtered = [];
   let currentPage = 1;
 
+  // KST 기준 오늘 날짜
+  function todayKST() {
+    const now = new Date(Date.now() + 9 * 60 * 60 * 1000);
+    return new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  }
+
+  function isExpired(deadline) {
+    if (!deadline) return false;
+    const today = todayKST();
+    // YYYY.MM.DD 또는 YYYY-MM-DD
+    let m = deadline.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
+    if (m) {
+      return new Date(+m[1], +m[2] - 1, +m[3]) < today;
+    }
+    // MM.DD
+    m = deadline.match(/^(\d{1,2})[.\-\/](\d{2})$/);
+    if (m) {
+      return new Date(today.getFullYear(), +m[1] - 1, +m[2]) < today;
+    }
+    return false;
+  }
+
   function loadData() {
     const btn = document.getElementById('scrapeBtn');
     btn.disabled = true;
@@ -357,8 +379,8 @@
       .then(r => r.json())
       .then(data => {
         document.getElementById('statusUpdated').textContent = `마지막 갱신: ${data.updated_at} (KST)`;
-        document.getElementById('statusTotal').textContent = `전체 ${data.count}건`;
-        allContests = data.contests;
+        allContests = data.contests.filter(c => !isExpired(c.deadline));
+        document.getElementById('statusTotal').textContent = `전체 ${allContests.length}건`;
         filtered = allContests;
         currentPage = 1;
         render();
