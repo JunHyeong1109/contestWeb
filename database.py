@@ -1,5 +1,6 @@
+import re
 import sqlite3
-from datetime import datetime, timezone, timedelta
+from datetime import date, datetime, timezone, timedelta
 
 DB_PATH = "contests.db"
 KST_OFFSET = timedelta(hours=9)
@@ -114,6 +115,42 @@ def get_contests(page: int = 1, per_page: int = 20,
         "pages": max(1, (total + per_page - 1) // per_page),
         "items": [dict(r) for r in rows],
     }
+
+
+def cleanup_expired() -> int:
+    """마감일이 지난 공모전을 DB에서 삭제. 삭제된 건수 반환."""
+    today = (datetime.now(timezone.utc) + KST_OFFSET).date()
+
+    def _parse(text: str):
+        if not text:
+            return None
+        clean = re.sub(r"[가-힣\s접수모집]", "", text)
+        m = re.search(r"(\d{4})[.\-/](\d{1,2})[.\-/](\d{1,2})", clean)
+        if m:
+            try:
+                return date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+            except ValueError:
+                pass
+        m = re.search(r"(\d{1,2})[.\-/](\d{2})$", clean)
+        if m:
+            try:
+                return date(today.year, int(m.group(1)), int(m.group(2)))
+            except ValueError:
+                pass
+        return None
+
+    with get_conn() as conn:
+        rows = conn.execute("SELECT id, deadline FROM contests").fetchall()
+        expired_ids = [row["id"] for row in rows
+                       if (d := _parse(row["deadline"])) is not None and d < today]
+        if expired_ids:
+            conn.execute(
+                f"DELETE FROM contests WHERE id IN ({','.join('?' * len(expired_ids))})",
+                expired_ids
+            )
+            conn.commit()
+
+    return len(expired_ids)
 
 
 def get_sources() -> list[str]:

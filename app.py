@@ -24,8 +24,9 @@ def scheduled_scrape():
     try:
         results = scraper.run_all_scrapers()
         added = db.upsert_contests(results)
+        deleted = db.cleanup_expired()
         db.log_scrape(len(results), added, "success")
-        print(f"[스케줄러] 완료: {len(results)}건 수집, {added}건 신규")
+        print(f"[스케줄러] 완료: {len(results)}건 수집, {added}건 신규, {deleted}건 만료 삭제")
     except Exception as e:
         db.log_scrape(0, 0, f"error: {e}")
         print(f"[스케줄러] 오류: {e}")
@@ -86,12 +87,16 @@ def api_contests():
 @app.route("/api/scrape", methods=["POST"])
 def api_scrape():
     """수동 스크래핑 트리거 (백그라운드)"""
+    before = db.get_last_scrape()
+    before_id = before["id"] if before else None
+
     def _run():
         scheduled_scrape()
 
     t = threading.Thread(target=_run, daemon=True)
     t.start()
-    return jsonify({"status": "started", "message": "스크래핑이 백그라운드에서 시작되었습니다."})
+    return jsonify({"status": "started", "before_id": before_id,
+                    "message": "스크래핑이 백그라운드에서 시작되었습니다."})
 
 
 @app.route("/api/status")

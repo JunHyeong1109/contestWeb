@@ -514,15 +514,36 @@
 
     localStorage.setItem(COOLDOWN_KEY, Date.now() + COOLDOWN_MS);
     btn.disabled = true;
-    showToast('스크래핑을 시작했습니다. 완료 후 새로고침 해주세요.', 5000);
+    btn.textContent = '⏳ 스크래핑 중...';
+    showToast('스크래핑을 시작했습니다. 완료되면 자동으로 새로고침됩니다.', 60000);
 
+    let beforeId = null;
     try {
       const res = await fetch('/api/scrape', { method: 'POST' });
       const data = await res.json();
-      showToast(data.message, 4000);
+      beforeId = data.before_id;
     } catch (e) {
       showToast('오류가 발생했습니다.', 3000);
+      updateCooldown();
+      return;
     }
+
+    // 완료될 때까지 3초마다 폴링
+    const poll = setInterval(async () => {
+      try {
+        const res = await fetch('/api/status');
+        const status = await res.json();
+        const lastId = status.last_scrape ? status.last_scrape.id : null;
+        if (lastId !== null && lastId !== beforeId) {
+          clearInterval(poll);
+          showToast('갱신 완료! 페이지를 새로고침합니다.', 2000);
+          setTimeout(() => location.reload(), 1500);
+        }
+      } catch (_) {}
+    }, 3000);
+
+    // 최대 3분 후 폴링 중단
+    setTimeout(() => clearInterval(poll), 180000);
 
     updateCooldown();
   }
