@@ -175,6 +175,21 @@ def _fetch_page(url: str) -> list[dict]:
     return _parse_ck_list(soup, "콘테스트코리아")
 
 
+def _fetch_thumbnail(url: str) -> str:
+    """상세 페이지에서 포스터 이미지 URL 추출"""
+    resp = _get(url)
+    if not resp:
+        return ""
+    soup = BeautifulSoup(resp.text, "html.parser")
+    img = soup.select_one(".img_area img[src]")
+    if not img:
+        return ""
+    src = img.get("src", "")
+    if not src or src.endswith(".gif"):
+        return ""
+    return src if src.startswith("http") else BASE_CK + src
+
+
 def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
     urls_template = [
         f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_bcode=030310001&page={{page}}",
@@ -201,7 +216,16 @@ def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
                     seen_urls.add(item["url"])
                     results.append(item)
 
-    print(f"[콘테스트코리아-공모전] {len(results)}건 수집 (IT 필터 + 만료 제외)")
+    # 상세 페이지에서 썸네일 병렬 수집
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        thumb_futures = {executor.submit(_fetch_thumbnail, item["url"]): i
+                         for i, item in enumerate(results)}
+        for future in as_completed(thumb_futures):
+            idx = thumb_futures[future]
+            results[idx]["thumbnail"] = future.result()
+
+    has_thumb = sum(1 for r in results if r.get("thumbnail"))
+    print(f"[콘테스트코리아-공모전] {len(results)}건 수집 (썸네일 {has_thumb}건)")
     return results
 
 
