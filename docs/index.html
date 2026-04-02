@@ -32,7 +32,7 @@
       line-height: 1.5;
     }
 
-    /* ── Header ── */
+    /* 헤더 */
     header {
       border-bottom: 1px solid var(--border);
       padding: 20px 24px;
@@ -86,7 +86,7 @@
       50% { opacity: 0.4; }
     }
 
-    /* ── Search bar ── */
+    /* 검색바 */
     .search-wrap {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
@@ -167,7 +167,7 @@
     }
     .btn-reset:hover { border-color: var(--muted); color: var(--text); }
 
-    /* ── Main ── */
+    /* 메인 컨테이너 */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -184,14 +184,14 @@
     }
     .result-bar strong { color: var(--accent); }
 
-    /* ── Grid ── */
+    /* 그리드 */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 16px;
     }
 
-    /* ── Card ── */
+    /* 카드 */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -293,7 +293,7 @@
     }
     .card-link:hover { background: var(--surface2); color: var(--accent); }
 
-    /* ── Empty / Loading ── */
+    /* 빈 상태 */
     .empty {
       grid-column: 1 / -1;
       text-align: center;
@@ -304,7 +304,7 @@
     .empty h3 { font-size: 1rem; margin-bottom: 6px; color: var(--text); }
     .empty p  { font-size: 0.85rem; }
 
-    /* ── Pagination ── */
+    /* 페이지네이션 */
     .pagination {
       display: flex;
       justify-content: center;
@@ -336,7 +336,7 @@
     }
     .page-btn.disabled { opacity: 0.3; cursor: not-allowed; }
 
-    /* ── Footer ── */
+    /* 푸터 */
     footer {
       text-align: center;
       padding: 32px 24px;
@@ -415,16 +415,19 @@
 </footer>
 
 <script>
+  // 상수·상태
   const PER_PAGE = 20;
   let allContests = [];
   let filtered = [];
   let currentPage = 1;
 
+  // KST 기준 오늘
   function todayKST() {
     const now = new Date(Date.now() + 9 * 60 * 60 * 1000);
     return new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   }
 
+  // 만료 여부 판별
   function isExpired(deadline) {
     if (!deadline) return false;
     const today = todayKST();
@@ -435,6 +438,7 @@
     return false;
   }
 
+  // D-day 계산
   function daysLeft(deadline) {
     if (!deadline) return null;
     const today = todayKST();
@@ -449,6 +453,7 @@
     return Math.round((d - today) / 86400000);
   }
 
+  // 마감 칩 HTML
   function deadlineChip(deadline) {
     if (!deadline) return '';
     const days = daysLeft(deadline);
@@ -458,6 +463,7 @@
     return `<span class="deadline-chip deadline-ok">D-${days}</span>`;
   }
 
+  // 데이터 로드
   function loadData() {
     fetch('./data/contests.json?t=' + Date.now())
       .then(r => r.json())
@@ -482,6 +488,7 @@
 
   loadData();
 
+  // 마감일 Date 변환
   function deadlineToDate(deadline) {
     if (!deadline) return new Date(9999, 0, 1);
     const today = todayKST();
@@ -492,6 +499,7 @@
     return new Date(9999, 0, 1);
   }
 
+  // 필터·정렬 적용
   function applyFilter() {
     const kw = document.getElementById('searchInput').value.trim().toLowerCase();
     const cat = document.getElementById('categorySelect').value;
@@ -513,6 +521,7 @@
     render();
   }
 
+  // 필터 초기화
   function resetFilter() {
     document.getElementById('searchInput').value = '';
     document.getElementById('categorySelect').value = '';
@@ -521,6 +530,7 @@
     render();
   }
 
+  // 목록 렌더링
   function render() {
     const total = filtered.length;
     const pages = Math.max(1, Math.ceil(total / PER_PAGE));
@@ -534,6 +544,7 @@
     renderPagination(pages);
   }
 
+  // 카드 그리드 렌더링
   function renderGrid(items) {
     const grid = document.getElementById('grid');
     if (!items.length) {
@@ -571,6 +582,7 @@
     `).join('');
   }
 
+  // 페이지네이션 렌더링
   function renderPagination(pages) {
     const el = document.getElementById('pagination');
     if (pages <= 1) { el.innerHTML = ''; return; }
@@ -587,12 +599,14 @@
     el.innerHTML = html;
   }
 
+  // 페이지 이동
   function goPage(p) {
     currentPage = p;
     render();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // XSS 이스케이프
   function esc(s) {
     return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
