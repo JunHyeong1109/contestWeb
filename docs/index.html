@@ -268,22 +268,7 @@
     .empty .icon { font-size: 3rem; margin-bottom: 16px; }
     .empty h3 { font-size: 1.1rem; margin-bottom: 8px; }
 
-    .scrape-btn {
-      background: rgba(255,255,255,0.18);
-      color: white;
-      border: 1.5px solid rgba(255,255,255,0.5);
-      padding: 8px 18px;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      white-space: nowrap;
-    }
-    .scrape-btn:hover:not(:disabled) { background: rgba(255,255,255,0.32); }
-    .scrape-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
       .grid { grid-template-columns: 1fr; }
       header h1 { font-size: 1.4rem; }
     }
@@ -297,7 +282,6 @@
       <h1>🏆 공모전 정보 모아보기</h1>
       <p>콘테스트코리아 &mdash; 매일 오전 8시 자동 갱신 (KST)</p>
     </div>
-    <button class="scrape-btn" id="scrapeBtn" onclick="loadData()">🔄 새로고침</button>
   </div>
 </header>
 
@@ -371,10 +355,6 @@
   }
 
   function loadData() {
-    const btn = document.getElementById('scrapeBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ 불러오는 중...';
-
     fetch('./data/contests.json?t=' + Date.now())
       .then(r => r.json())
       .then(data => {
@@ -393,10 +373,6 @@
             <h3>데이터를 불러올 수 없습니다</h3>
             <p>잠시 후 다시 시도해 주세요.</p>
           </div>`;
-      })
-      .finally(() => {
-        btn.disabled = false;
-        btn.textContent = '🔄 새로고침';
       });
   }
 
