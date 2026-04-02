@@ -7,16 +7,17 @@ KST_OFFSET = timedelta(hours=9)
 
 
 def _now_kst() -> str:
-    """현재 한국 시간(KST) 문자열 반환"""
     return (datetime.now(timezone.utc) + KST_OFFSET).strftime("%Y-%m-%d %H:%M:%S")
 
 
+# DB 연결
 def get_conn():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
 
+# 테이블 초기화
 def init_db():
     with get_conn() as conn:
         conn.execute("""
@@ -45,8 +46,8 @@ def init_db():
         conn.commit()
 
 
+# 공모전 upsert
 def upsert_contests(contests: list[dict]) -> int:
-    """Insert new contests, skip duplicates. Returns count of newly added."""
     added = 0
     now = _now_kst()
     with get_conn() as conn:
@@ -68,6 +69,7 @@ def upsert_contests(contests: list[dict]) -> int:
     return added
 
 
+# 스크래핑 로그 기록
 def log_scrape(total: int, added: int, status: str):
     now = _now_kst()
     with get_conn() as conn:
@@ -78,6 +80,7 @@ def log_scrape(total: int, added: int, status: str):
         conn.commit()
 
 
+# 공모전 목록 조회
 def get_contests(page: int = 1, per_page: int = 20,
                  source: str = None, keyword: str = None,
                  category: str = None) -> dict:
@@ -117,8 +120,8 @@ def get_contests(page: int = 1, per_page: int = 20,
     }
 
 
+# 만료 공모전 삭제
 def cleanup_expired() -> int:
-    """마감일이 지난 공모전을 DB에서 삭제. 삭제된 건수 반환."""
     today = (datetime.now(timezone.utc) + KST_OFFSET).date()
 
     def _parse(text: str):
@@ -153,6 +156,7 @@ def cleanup_expired() -> int:
     return len(expired_ids)
 
 
+# 출처 목록 조회
 def get_sources() -> list[str]:
     with get_conn() as conn:
         rows = conn.execute(
@@ -161,6 +165,7 @@ def get_sources() -> list[str]:
     return [r["source"] for r in rows]
 
 
+# 마지막 스크래핑 로그 조회
 def get_last_scrape() -> dict | None:
     with get_conn() as conn:
         row = conn.execute(

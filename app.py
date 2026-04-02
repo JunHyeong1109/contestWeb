@@ -1,9 +1,3 @@
-"""
-공모전 정보 웹 서비스
-- Flask 웹 서버
-- APScheduler: 매일 오전 8시 자동 스크래핑
-"""
-
 import os
 import threading
 from datetime import datetime
@@ -18,7 +12,7 @@ import scraper
 app = Flask(__name__)
 
 
-# ─── 스케줄러 설정 ────────────────────────────────────────────
+# 스케줄러
 def scheduled_scrape():
     print(f"[스케줄러] 스크래핑 시작: {datetime.now()}")
     try:
@@ -38,12 +32,12 @@ scheduler.add_job(
     CronTrigger(hour=8, minute=0, timezone="Asia/Seoul"),
     id="daily_scrape",
     replace_existing=True,
-    misfire_grace_time=3600,  # 1시간 이내 missed job 허용
-    coalesce=True,            # 여러 번 missed 시 한 번만 실행
+    misfire_grace_time=3600,
+    coalesce=True,
 )
 
 
-# ─── 라우트 ───────────────────────────────────────────────────
+# 라우트
 @app.route("/")
 def index():
     page = int(request.args.get("page", 1))
@@ -86,7 +80,6 @@ def api_contests():
 
 @app.route("/api/scrape", methods=["POST"])
 def api_scrape():
-    """수동 스크래핑 트리거 (백그라운드)"""
     before = db.get_last_scrape()
     before_id = before["id"] if before else None
 
@@ -113,7 +106,7 @@ def api_status():
     })
 
 
-# ─── 앱 시작 ─────────────────────────────────────────────────
+# 앱 시작
 def _bootstrap():
     db.init_db()
 
@@ -136,5 +129,5 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
 
-# Gunicorn/Render 진입점
+# Gunicorn 진입점
 application = app

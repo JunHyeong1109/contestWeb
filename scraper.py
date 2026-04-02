@@ -1,8 +1,3 @@
-"""
-공모전 스크래퍼 (IT/컴퓨터공학 관련만 수집)
-- 콘테스트코리아: IT 카테고리 전용 URL
-"""
-
 import re
 import requests
 from bs4 import BeautifulSoup
@@ -13,17 +8,14 @@ KST_OFFSET = timedelta(hours=9)
 
 
 def _today_kst() -> date:
-    """현재 한국 날짜(KST) 반환"""
     return (datetime.now(timezone.utc) + KST_OFFSET).date()
 
 
 def _parse_deadline_date(text: str):
-    """deadline 텍스트에서 date 객체 추출. 실패시 None."""
     if not text:
         return None
     clean = re.sub(r"[가-힣\s접수모집]", "", text)
 
-    # YYYY.MM.DD 또는 YYYY-MM-DD
     m = re.search(r"(\d{4})[.\-/](\d{1,2})[.\-/](\d{1,2})", clean)
     if m:
         try:
@@ -31,7 +23,6 @@ def _parse_deadline_date(text: str):
         except ValueError:
             pass
 
-    # MM.DD (연도 없음) → 올해 or 내년
     m = re.search(r"(\d{1,2})[.\-/](\d{2})$", clean)
     if m:
         today = _today_kst()
@@ -47,14 +38,13 @@ def _parse_deadline_date(text: str):
 
 
 def _is_expired(deadline_text: str) -> bool:
-    """마감일이 오늘(KST)보다 이전이면 True (날짜 파싱 실패 시 False = 통과)"""
     d = _parse_deadline_date(deadline_text)
     if d is None:
         return False
     return d < _today_kst()
 
 
-# IT/컴퓨터공학 관련 키워드 (제목·카테고리·주최에 하나라도 포함되면 통과)
+# IT 관련 키워드
 IT_KEYWORDS = [
     "IT", "SW", "AI", "소프트웨어", "프로그래밍", "코딩", "개발",
     "컴퓨터", "알고리즘", "데이터", "빅데이터", "클라우드", "인공지능",
@@ -67,7 +57,6 @@ IT_KEYWORDS = [
 
 
 def _is_it_related(item: dict) -> bool:
-    """IT/CS 관련 여부를 제목·카테고리·주최 텍스트로 판단"""
     target = " ".join([
         item.get("title", ""),
         item.get("category", ""),
@@ -100,7 +89,6 @@ def _get(url, **kwargs):
 
 
 def _parse_ck_list(soup: BeautifulSoup, source_name: str) -> list[dict]:
-    """콘테스트코리아 .list_wrap li 항목을 파싱하여 반환"""
     results = []
     items = [li for li in soup.select(".list_wrap li")
              if li.select_one('a[href*="view.php"]')]
@@ -164,9 +152,7 @@ def _parse_ck_list(soup: BeautifulSoup, source_name: str) -> list[dict]:
     return results
 
 
-# ─────────────────────────────────────────────────────────────
-# 1. 콘테스트코리아 - IT 공모전 (Txt_bcode=030310001: 학문·과학·IT)
-# ─────────────────────────────────────────────────────────────
+# 콘테스트코리아 스크래퍼
 def _fetch_page(url: str) -> list[dict]:
     resp = _get(url)
     if not resp:
@@ -176,7 +162,6 @@ def _fetch_page(url: str) -> list[dict]:
 
 
 def _fetch_thumbnail(url: str) -> str:
-    """상세 페이지에서 포스터 이미지 URL 추출"""
     resp = _get(url)
     if not resp:
         return ""
@@ -216,7 +201,7 @@ def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
                     seen_urls.add(item["url"])
                     results.append(item)
 
-    # 상세 페이지에서 썸네일 병렬 수집
+    # 썸네일 병렬 수집
     with ThreadPoolExecutor(max_workers=10) as executor:
         thumb_futures = {executor.submit(_fetch_thumbnail, item["url"]): i
                          for i, item in enumerate(results)}
@@ -229,9 +214,7 @@ def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
     return results
 
 
-# ─────────────────────────────────────────────────────────────
 # 통합 실행
-# ─────────────────────────────────────────────────────────────
 def run_all_scrapers() -> list[dict]:
     all_results = []
     scrapers = [
