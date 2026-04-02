@@ -396,7 +396,7 @@
         <span style="color:var(--border)">·</span>
         <span id="statusTotal"></span>
       </div>
-      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">다크</button>
     </div>
   </div>
 </header>
@@ -449,20 +449,19 @@
 
 <script>
   // 테마 토글
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.getElementById('themeBtn').textContent = theme === 'light' ? '라이트' : '다크';
+    localStorage.setItem('theme', theme);
+  }
+
   function toggleTheme() {
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const next = isLight ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    document.getElementById('themeBtn').textContent = next === 'light' ? '다크' : '라이트';
-    localStorage.setItem('theme', next);
+    setTheme(isLight ? 'dark' : 'light');
   }
 
   (function () {
-    const saved = localStorage.getItem('theme') || 'dark';
-    if (saved === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      document.getElementById('themeBtn').textContent = '다크';
-    }
+    setTheme(localStorage.getItem('theme') || 'dark');
   })();
 
   // 상수·상태
