@@ -3,232 +3,288 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>공모전 정보 모아보기</title>
+  <title>공모전 모아보기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --primary: #16a34a;
-      --primary-light: #22c55e;
-      --bg: #f0fdf4;
-      --card-bg: #ffffff;
-      --border: #d1fae5;
-      --text: #1e293b;
-      --muted: #64748b;
-      --tag-bg: #dcfce7;
-      --tag-color: #15803d;
-      --radius: 12px;
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #21262d;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --accent-dim: #1f3a5f;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --danger: #f85149;
+      --warn: #d29922;
+      --safe: #3fb950;
+      --radius: 10px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
+      line-height: 1.5;
     }
 
     /* ── Header ── */
     header {
-      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
-      color: white;
-      padding: 28px 24px 24px;
-      box-shadow: 0 4px 20px rgba(22,163,74,0.3);
-    }
-    header h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.5px; }
-    header p  { margin-top: 4px; font-size: 0.9rem; opacity: 0.85; }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* ── Status bar ── */
-    .status-bar {
-      background: #fff;
       border-bottom: 1px solid var(--border);
-      padding: 10px 24px;
-      font-size: 0.8rem;
-      color: var(--muted);
+      padding: 20px 24px;
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .status-bar-inner {
-      max-width: 1200px;
+    .header-inner {
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
     }
-    .status-dot {
-      width: 8px; height: 8px;
-      background: #22c55e;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .logo-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .header-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pulse {
+      width: 7px; height: 7px;
+      background: var(--safe);
       border-radius: 50%;
       display: inline-block;
-      margin-right: 5px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
 
-    /* ── Main layout ── */
+    /* ── Search bar ── */
+    .search-wrap {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+    }
+    .search-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 220px;
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0 14px;
+      gap: 8px;
+      transition: border-color 0.2s;
+    }
+    .search-box:focus-within { border-color: var(--accent); }
+    .search-box svg { color: var(--muted); flex-shrink: 0; }
+    .search-box input {
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 0.875rem;
+      font-family: inherit;
+      width: 100%;
+      padding: 10px 0;
+    }
+    .search-box input::placeholder { color: var(--muted); }
+
+    select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 10px 14px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    select:focus { border-color: var(--accent); }
+    select option { background: var(--surface2); }
+
+    .btn-search {
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-search:hover { opacity: 0.85; }
+
+    .btn-reset {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--muted);
+      padding: 10px 16px;
+      font-size: 0.875rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-reset:hover { border-color: var(--muted); color: var(--text); }
+
+    /* ── Main ── */
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 24px;
     }
 
-    /* ── Search & Filter ── */
-    .filter-bar {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      margin-bottom: 24px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .search-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 10px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .search-input:focus { border-color: var(--primary); }
-
-    select {
-      padding: 10px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.875rem;
-      background: white;
-      outline: none;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    select:focus { border-color: var(--primary); }
-
-    .btn-search {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn-search:hover { background: var(--primary-light); }
-
-    .btn-reset {
-      background: white;
-      color: var(--muted);
-      border: 1.5px solid var(--border);
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      cursor: pointer;
-    }
-    .btn-reset:hover { border-color: #94a3b8; }
-
-    /* ── Result count ── */
-    .result-info {
-      font-size: 0.875rem;
-      color: var(--muted);
-      margin-bottom: 16px;
+    .result-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
+      color: var(--muted);
     }
-    .result-info strong { color: var(--primary); }
+    .result-bar strong { color: var(--accent); }
 
     /* ── Grid ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
     }
 
     /* ── Card ── */
     .card {
-      background: var(--card-bg);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+      overflow: hidden;
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+      border-color: var(--accent);
+      transform: translateY(-2px);
     }
 
     .card-body {
-      padding: 16px;
+      padding: 18px;
       flex: 1;
       display: flex;
       flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
       gap: 8px;
     }
 
-    .card-badges {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
     .badge {
-      font-size: 0.7rem;
-      font-weight: 700;
+      font-size: 0.68rem;
+      font-weight: 600;
       padding: 3px 8px;
       border-radius: 20px;
+      white-space: nowrap;
     }
-    .badge-source {
-      background: var(--tag-bg);
-      color: var(--tag-color);
+    .badge-source { background: var(--accent-dim); color: var(--accent); }
+    .badge-category { background: #2d2008; color: #e3a008; }
+
+    .deadline-chip {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .badge-category {
-      background: #fef3c7;
-      color: #92400e;
-    }
+    .deadline-urgent { background: #3d0f0f; color: var(--danger); }
+    .deadline-soon   { background: #2d1f00; color: var(--warn); }
+    .deadline-ok     { background: #0d2a15; color: var(--safe); }
 
     .card-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1.45;
+      font-size: 0.93rem;
+      font-weight: 600;
+      line-height: 1.5;
       color: var(--text);
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
 
-    .card-meta {
-      font-size: 0.8rem;
+    .card-host {
+      font-size: 0.78rem;
       color: var(--muted);
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
     }
-    .card-meta span { display: flex; align-items: center; gap: 5px; }
 
+    .card-footer {
+      border-top: 1px solid var(--border);
+    }
     .card-link {
       display: block;
       text-align: center;
-      background: var(--primary);
-      color: white;
+      color: var(--muted);
       text-decoration: none;
-      padding: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-top: auto;
-      transition: background 0.2s;
+      padding: 11px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
     }
-    .card-link:hover { background: var(--primary-light); }
+    .card-link:hover { background: var(--surface2); color: var(--accent); }
+
+    /* ── Empty / Loading ── */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+    }
+    .empty .icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .empty h3 { font-size: 1rem; margin-bottom: 6px; color: var(--text); }
+    .empty p  { font-size: 0.85rem; }
 
     /* ── Pagination ── */
     .pagination {
@@ -240,63 +296,69 @@
       flex-wrap: wrap;
     }
     .page-btn {
-      padding: 8px 14px;
-      border: 1.5px solid var(--border);
-      background: white;
+      padding: 7px 13px;
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
+      font-family: inherit;
+      color: var(--muted);
       cursor: pointer;
-      color: var(--text);
       transition: all 0.15s;
     }
-    .page-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .page-btn:hover:not(.disabled):not(.active) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
     .page-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d1117;
       font-weight: 700;
     }
-    .page-btn.disabled { opacity: 0.4; cursor: not-allowed; }
+    .page-btn.disabled { opacity: 0.3; cursor: not-allowed; }
 
-    /* ── Empty / Loading ── */
-    .empty {
+    /* ── Footer ── */
+    footer {
       text-align: center;
-      padding: 80px 20px;
+      padding: 32px 24px;
+      font-size: 0.78rem;
       color: var(--muted);
-      grid-column: 1 / -1;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
     }
-    .empty .icon { font-size: 3rem; margin-bottom: 16px; }
-    .empty h3 { font-size: 1.1rem; margin-bottom: 8px; }
 
-@media (max-width: 600px) {
+    @media (max-width: 640px) {
       .grid { grid-template-columns: 1fr; }
-      header h1 { font-size: 1.4rem; }
+      .logo-text { display: none; }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-    <div>
-      <h1>🏆 공모전 정보 모아보기</h1>
-      <p>콘테스트코리아 &mdash; 매일 오전 8시 자동 갱신 (KST)</p>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-icon">🏆</div>
+      <span class="logo-text">공모전 모아보기</span>
+    </div>
+    <div class="header-meta">
+      <span class="pulse"></span>
+      <span id="statusUpdated">로딩 중...</span>
+      <span style="color:var(--border)">·</span>
+      <span id="statusTotal"></span>
     </div>
   </div>
 </header>
 
-<div class="status-bar">
-  <div class="status-bar-inner">
-    <span><span class="status-dot"></span>자동 갱신 활성</span>
-    <span id="statusUpdated">로딩 중...</span>
-    <span id="statusTotal"></span>
-  </div>
-</div>
-
-<div class="container">
-
-  <div class="filter-bar">
-    <input class="search-input" type="text" id="searchInput" placeholder="공모전 제목, 주최 검색..." />
+<div class="search-wrap">
+  <div class="search-inner">
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="제목, 주최 검색..." />
+    </div>
     <select id="categorySelect">
       <option value="">전체 카테고리</option>
       <option value="디자인">디자인</option>
@@ -309,8 +371,10 @@
     <button class="btn-search" onclick="applyFilter()">검색</button>
     <button class="btn-reset" onclick="resetFilter()">초기화</button>
   </div>
+</div>
 
-  <div class="result-info">
+<div class="container">
+  <div class="result-bar">
     <span id="resultCount"></span>
     <span id="pageInfo"></span>
   </div>
@@ -318,13 +382,16 @@
   <div class="grid" id="grid">
     <div class="empty">
       <div class="icon">⏳</div>
-      <h3>데이터를 불러오는 중...</h3>
+      <h3>불러오는 중...</h3>
     </div>
   </div>
 
   <div class="pagination" id="pagination"></div>
-
 </div>
+
+<footer>
+  콘테스트코리아 데이터 · 매일 오전 8시(KST) 자동 갱신
+</footer>
 
 <script>
   const PER_PAGE = 20;
@@ -332,7 +399,6 @@
   let filtered = [];
   let currentPage = 1;
 
-  // KST 기준 오늘 날짜
   function todayKST() {
     const now = new Date(Date.now() + 9 * 60 * 60 * 1000);
     return new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
@@ -341,32 +407,49 @@
   function isExpired(deadline) {
     if (!deadline) return false;
     const today = todayKST();
-    // YYYY.MM.DD 또는 YYYY-MM-DD
     let m = deadline.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
-    if (m) {
-      return new Date(+m[1], +m[2] - 1, +m[3]) < today;
-    }
-    // MM.DD
+    if (m) return new Date(+m[1], +m[2] - 1, +m[3]) < today;
     m = deadline.match(/^(\d{1,2})[.\-\/](\d{2})$/);
-    if (m) {
-      return new Date(today.getFullYear(), +m[1] - 1, +m[2]) < today;
-    }
+    if (m) return new Date(today.getFullYear(), +m[1] - 1, +m[2]) < today;
     return false;
+  }
+
+  function daysLeft(deadline) {
+    if (!deadline) return null;
+    const today = todayKST();
+    let m = deadline.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
+    let d;
+    if (m) d = new Date(+m[1], +m[2] - 1, +m[3]);
+    else {
+      m = deadline.match(/^(\d{1,2})[.\-\/](\d{2})$/);
+      if (m) d = new Date(today.getFullYear(), +m[1] - 1, +m[2]);
+      else return null;
+    }
+    return Math.round((d - today) / 86400000);
+  }
+
+  function deadlineChip(deadline) {
+    if (!deadline) return '';
+    const days = daysLeft(deadline);
+    if (days === null) return `<span class="deadline-chip deadline-ok">📅 ${esc(deadline)}</span>`;
+    if (days <= 7)  return `<span class="deadline-chip deadline-urgent">D-${days}</span>`;
+    if (days <= 30) return `<span class="deadline-chip deadline-soon">D-${days}</span>`;
+    return `<span class="deadline-chip deadline-ok">D-${days}</span>`;
   }
 
   function loadData() {
     fetch('./data/contests.json?t=' + Date.now())
       .then(r => r.json())
       .then(data => {
-        document.getElementById('statusUpdated').textContent = `마지막 갱신: ${data.updated_at} (KST)`;
+        document.getElementById('statusUpdated').textContent = `갱신 ${data.updated_at.slice(0, 10)}`;
         allContests = data.contests.filter(c => !isExpired(c.deadline));
-        document.getElementById('statusTotal').textContent = `전체 ${allContests.length}건`;
+        document.getElementById('statusTotal').textContent = `${allContests.length}건`;
         filtered = allContests;
         currentPage = 1;
         render();
       })
       .catch(() => {
-        document.getElementById('statusUpdated').textContent = '데이터를 불러올 수 없습니다.';
+        document.getElementById('statusUpdated').textContent = '불러오기 실패';
         document.getElementById('grid').innerHTML = `
           <div class="empty">
             <div class="icon">⚠️</div>
@@ -381,10 +464,9 @@
   function applyFilter() {
     const kw = document.getElementById('searchInput').value.trim().toLowerCase();
     const cat = document.getElementById('categorySelect').value;
-
     filtered = allContests.filter(c => {
-      const matchKw = !kw || (c.title || '').toLowerCase().includes(kw) || (c.host || '').toLowerCase().includes(kw);
-      const matchCat = !cat || (c.category || '').includes(cat);
+      const matchKw = !kw || (c.title||'').toLowerCase().includes(kw) || (c.host||'').toLowerCase().includes(kw);
+      const matchCat = !cat || (c.category||'').includes(cat);
       return matchKw && matchCat;
     });
     currentPage = 1;
@@ -403,13 +485,11 @@
     const total = filtered.length;
     const pages = Math.max(1, Math.ceil(total / PER_PAGE));
     if (currentPage > pages) currentPage = pages;
-
     const start = (currentPage - 1) * PER_PAGE;
     const items = filtered.slice(start, start + PER_PAGE);
 
-    document.getElementById('resultCount').innerHTML = `전체 <strong>${total}</strong>건`;
+    document.getElementById('resultCount').innerHTML = `<strong>${total}</strong>개의 공모전`;
     document.getElementById('pageInfo').textContent = `${currentPage} / ${pages} 페이지`;
-
     renderGrid(items);
     renderPagination(pages);
   }
@@ -421,24 +501,26 @@
         <div class="empty">
           <div class="icon">🔍</div>
           <h3>검색 결과가 없습니다</h3>
-          <p>다른 키워드로 검색하거나 전체 목록을 확인해보세요.</p>
+          <p>다른 키워드로 다시 검색해보세요.</p>
         </div>`;
       return;
     }
     grid.innerHTML = items.map(c => `
       <div class="card">
         <div class="card-body">
-          <div class="card-badges">
-            <span class="badge badge-source">${esc(c.source)}</span>
-            ${c.category ? `<span class="badge badge-category">${esc(c.category)}</span>` : ''}
+          <div class="card-top">
+            <div style="display:flex;gap:6px;flex-wrap:wrap;">
+              <span class="badge badge-source">${esc(c.source)}</span>
+              ${c.category ? `<span class="badge badge-category">${esc(c.category)}</span>` : ''}
+            </div>
+            ${deadlineChip(c.deadline)}
           </div>
           <div class="card-title">${esc(c.title)}</div>
-          <div class="card-meta">
-            ${c.host     ? `<span>🏢 ${esc(c.host)}</span>` : ''}
-            ${c.deadline ? `<span>📅 마감: ${esc(c.deadline)}</span>` : ''}
-          </div>
+          ${c.host ? `<div class="card-host">${esc(c.host)}</div>` : ''}
         </div>
-        <a class="card-link" href="${esc(c.url)}" target="_blank" rel="noopener">자세히 보기 →</a>
+        <div class="card-footer">
+          <a class="card-link" href="${esc(c.url)}" target="_blank" rel="noopener">자세히 보기 →</a>
+        </div>
       </div>
     `).join('');
   }
@@ -446,24 +528,16 @@
   function renderPagination(pages) {
     const el = document.getElementById('pagination');
     if (pages <= 1) { el.innerHTML = ''; return; }
-
     const p = currentPage;
-    let html = '';
-
-    html += p > 1
-      ? `<button class="page-btn" onclick="goPage(${p - 1})">‹ 이전</button>`
-      : `<button class="page-btn disabled" disabled>‹ 이전</button>`;
-
-    const from = Math.max(1, p - 3);
-    const to   = Math.min(pages, p + 3);
-    for (let i = from; i <= to; i++) {
-      html += `<button class="page-btn${i === p ? ' active' : ''}" onclick="goPage(${i})">${i}</button>`;
-    }
-
+    let html = p > 1
+      ? `<button class="page-btn" onclick="goPage(${p-1})">← 이전</button>`
+      : `<button class="page-btn disabled" disabled>← 이전</button>`;
+    const from = Math.max(1, p - 3), to = Math.min(pages, p + 3);
+    for (let i = from; i <= to; i++)
+      html += `<button class="page-btn${i===p?' active':''}" onclick="goPage(${i})">${i}</button>`;
     html += p < pages
-      ? `<button class="page-btn" onclick="goPage(${p + 1})">다음 ›</button>`
-      : `<button class="page-btn disabled" disabled>다음 ›</button>`;
-
+      ? `<button class="page-btn" onclick="goPage(${p+1})">다음 →</button>`
+      : `<button class="page-btn disabled" disabled>다음 →</button>`;
     el.innerHTML = html;
   }
 
@@ -474,17 +548,12 @@
   }
 
   function esc(s) {
-    return (s || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   document.getElementById('searchInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') applyFilter();
   });
 </script>
-
 </body>
 </html>
