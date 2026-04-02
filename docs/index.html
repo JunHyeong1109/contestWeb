@@ -9,6 +9,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* 다크 테마 (기본) */
     :root {
       --bg: #0d1117;
       --surface: #161b22;
@@ -22,6 +23,21 @@
       --warn: #d29922;
       --safe: #3fb950;
       --radius: 10px;
+    }
+
+    /* 라이트 테마 */
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --surface: #f6f8fa;
+      --surface2: #eaeef2;
+      --border: #d0d7de;
+      --accent: #0969da;
+      --accent-dim: #dbeafe;
+      --text: #1f2328;
+      --muted: #656d76;
+      --danger: #cf222e;
+      --warn: #9a6700;
+      --safe: #1a7f37;
     }
 
     body {
@@ -346,6 +362,20 @@
       margin-top: 40px;
     }
 
+    /* 테마 토글 버튼 */
+    .theme-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      padding: 6px 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      line-height: 1;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
     @media (max-width: 640px) {
       .grid { grid-template-columns: 1fr; }
       .logo-text { display: none; }
@@ -359,11 +389,14 @@
     <div class="logo">
       <span class="logo-text">공모전 모아보기</span>
     </div>
-    <div class="header-meta">
-      <span class="pulse"></span>
-      <span id="statusUpdated">로딩 중...</span>
-      <span style="color:var(--border)">·</span>
-      <span id="statusTotal"></span>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="header-meta">
+        <span class="pulse"></span>
+        <span id="statusUpdated">로딩 중...</span>
+        <span style="color:var(--border)">·</span>
+        <span id="statusTotal"></span>
+      </div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌙</button>
     </div>
   </div>
 </header>
@@ -415,6 +448,23 @@
 </footer>
 
 <script>
+  // 테마 토글
+  function toggleTheme() {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const next = isLight ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    document.getElementById('themeBtn').textContent = next === 'light' ? '🌙' : '☀️';
+    localStorage.setItem('theme', next);
+  }
+
+  (function () {
+    const saved = localStorage.getItem('theme') || 'dark';
+    if (saved === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.getElementById('themeBtn').textContent = '🌙';
+    }
+  })();
+
   // 상수·상태
   const PER_PAGE = 20;
   let allContests = [];
