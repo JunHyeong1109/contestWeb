@@ -453,7 +453,7 @@
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const next = isLight ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', next);
-    document.getElementById('themeBtn').textContent = next === 'light' ? '🌙' : '☀️';
+    document.getElementById('themeBtn').textContent = next === 'light' ? '다크' : '라이트';
     localStorage.setItem('theme', next);
   }
 
@@ -461,7 +461,7 @@
     const saved = localStorage.getItem('theme') || 'dark';
     if (saved === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-      document.getElementById('themeBtn').textContent = '🌙';
+      document.getElementById('themeBtn').textContent = '다크';
     }
   })();
 
