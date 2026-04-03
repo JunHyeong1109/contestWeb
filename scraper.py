@@ -41,6 +41,13 @@ def _is_expired(deadline_text: str) -> bool:
     return d < _today_kst()
 
 
+# 제목에 이전 연도 포함 여부
+def _has_past_year(title: str) -> bool:
+    current_year = _today_kst().year
+    years = re.findall(r'\b(20\d{2})\b', title)
+    return any(int(y) < current_year for y in years)
+
+
 # IT 관련 키워드
 IT_KEYWORDS = [
     "IT", "SW", "AI", "소프트웨어", "프로그래밍", "코딩", "개발",
@@ -194,7 +201,8 @@ def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
             for item in future.result():
                 if (item["url"] not in seen_urls
                         and _is_it_related(item)
-                        and not _is_expired(item.get("deadline", ""))):
+                        and not _is_expired(item.get("deadline", ""))
+                        and not _has_past_year(item.get("title", ""))):
                     seen_urls.add(item["url"])
                     results.append(item)
 
