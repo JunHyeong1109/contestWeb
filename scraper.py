@@ -41,6 +41,14 @@ def _is_expired(deadline_text: str) -> bool:
     return d < _today_kst()
 
 
+# 마감일까지 100일 초과 여부
+def _is_too_far(deadline_text: str) -> bool:
+    d = _parse_deadline_date(deadline_text)
+    if d is None:
+        return False
+    return (d - _today_kst()).days > 100
+
+
 # 제목에 이전 연도 포함 여부
 def _has_past_year(title: str) -> bool:
     current_year = _today_kst().year
@@ -194,6 +202,7 @@ def scrape_contestkorea_contest(pages: int = 10) -> list[dict]:
                 if (item["url"] not in seen_urls
                         and _is_it_related(item)
                         and not _is_expired(item.get("deadline", ""))
+                        and not _is_too_far(item.get("deadline", ""))
                         and not _has_past_year(item.get("title", ""))):
                     seen_urls.add(item["url"])
                     results.append(item)

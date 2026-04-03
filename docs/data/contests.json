@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-04-03 14:26:37",
-  "count": 109,
+  "updated_at": "2026-04-03 14:35:10",
+  "count": 63,
   "contests": [
     {
       "title": "제1회 서울특별시약사회 학술제 논문 공모",
@@ -243,466 +243,6 @@
       "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603251326001906425.jpg"
     },
     {
-      "title": "AI 에이전트 서비스 개발 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512190004",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.28",
-      "host": "구름",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512241638356428645.png"
-    },
-    {
-      "title": "강릉시립도서관 2026년 도서관 프로그램 통합 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512170011",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.31",
-      "host": "강릉시립도서관",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512221905017302274.jpg"
-    },
-    {
-      "title": "Curieus Biosimulation Exercise 2026 (CUBE 2026) 참가자 모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512200001",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.31",
-      "host": "커넥츠",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512202023411476133.png"
-    },
-    {
-      "title": "[2026 한국철학올림피아드] 제36회 한국철학올림피아드(KPO)",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512090035",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.29",
-      "host": "한국철학회 철학올림피아드 위원회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512191447167526364.png"
-    },
-    {
-      "title": "[2026 한국철학올림피아드] 제34회 국제철학올림피아드(IPO) 국내예선 대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512090036",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.29",
-      "host": "한국철학회 철학올림피아드 위원회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512191502533484186.png"
-    },
-    {
-      "title": "제6회 법학경시대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512150009",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.26",
-      "host": "법률사무소 선율",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512151346049980340.png"
-    },
-    {
-      "title": "BIPAxVerse8 AI게임창작콘테스트",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512090040",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.23",
-      "host": "부산정보산업진흥원 / Verse8",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512091707289127054.jpg"
-    },
-    {
-      "title": "크리에이티브 수영 해커톤",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512040042",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.21",
-      "host": "수영구청",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512041826487046488.png"
-    },
-    {
-      "title": "일상을 바꿀 생성형 AI 및 대화형 GPT 기술 활용 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510160015",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.30",
-      "host": "세종사이버대학교 소프트웨어공학과",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512031556594170989.jpeg"
-    },
-    {
-      "title": "2026 김해영상미디어센터  미디어·문화예술 교육 프로그램 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512010034",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.12",
-      "host": "김해문화관광재단",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512051414427438082.png"
-    },
-    {
-      "title": "KIMUN WORKSHOP 2026 경희대학교 모의유엔 워크숍",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202512010049",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.31",
-      "host": "경희대학교 모의유엔 사무국 KICMUN",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202512011822481293593.png"
-    },
-    {
-      "title": "제1회 타닥 크리에이터 월드제작공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511270038",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.19",
-      "host": "타닥",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511271742014781124.png"
-    },
-    {
-      "title": "디지털 휴먼 숏폼 영상 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511260036",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.17",
-      "host": "전자신문",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511261849456658775.jpg"
-    },
-    {
-      "title": "2026년 치안정책연구소 연구주제 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511180014",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.10",
-      "host": "치안정책연구소",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
-    },
-    {
-      "title": "제 2회 VARCO활용 게임제작 공모전 (Voice 편)",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511240039",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.05",
-      "host": "NC AI",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511241825030909128.jpg"
-    },
-    {
-      "title": "성분명 처방 반대 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511190056",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.12",
-      "host": "서울특별시의사회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511201337520922536.jpg"
-    },
-    {
-      "title": "2026년도 농업연구과제 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511110009",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.10",
-      "host": "대산농촌재단",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511111007151478215.jpg"
-    },
-    {
-      "title": "제2회 포스텍인공지능예술주간 청소년 인공지능 예술작품 특별 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511070028",
-      "source": "콘테스트코리아",
-      "category": "미술•디자인•웹툰",
-      "deadline": "11.23",
-      "host": "포항문화재단",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511201511556988018.jpg"
-    },
-    {
-      "title": "제 2회 스마트그리드 아이디어 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511170026",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.26",
-      "host": "한국스마트그리드협회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511171509549229429.jpg"
-    },
-    {
-      "title": "제 2회 NC AI ‘VARCO Vocie’ 활용 게임 제작 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511170043",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.05",
-      "host": "NC AI",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511171755379358767.jpg"
-    },
-    {
-      "title": "2026 서울청년패널조사 청년논문 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602100049",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.10",
-      "host": "서울연구원",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602231017320047603.jpg"
-    },
-    {
-      "title": "제1회 청소년건강패널조사 원시자료 활용 경진대회 및 학술행사",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602200045",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.31",
-      "host": "질병관리청",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602201401330358061.jpg"
-    },
-    {
-      "title": "「통일과 법률」 제66호 원고 모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602100071",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.05",
-      "host": "법무부",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602181427344757366.jpg"
-    },
-    {
-      "title": "제2회 미당학술상 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602050067",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "07.31",
-      "host": "미당연구소",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602111444219739686.jpg"
-    },
-    {
-      "title": "한국연구재단 등재학술지 『항도부산』 제52호 원고모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602030041",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.30",
-      "host": "부산광역시",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
-    },
-    {
-      "title": "WAIFC Young Academic Award 2026 논문 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602030010",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.30",
-      "host": "부산국제금융진흥원",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
-    },
-    {
-      "title": "제1회 실감형콘텐츠(AR/VR) 민간기능경기대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230078",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.26",
-      "host": "한국정보기술진흥원",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603231910507850412.png"
-    },
-    {
-      "title": "AI 기능 직접 만든다 | 서비스 문제 해결 개발 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202604020038",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.19",
-      "host": "어치브모먼트",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604021409465741309.png"
-    },
-    {
-      "title": "전국민 AI 경진대회 - 인공지능 루키 대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603280004",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.08",
-      "host": "과학기술정보통신부",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604021720505317525.jpg"
-    },
-    {
-      "title": "제4회 전국 AI 영어 스피치 경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202604010074",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.07",
-      "host": "양천구청",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604011506170107965.jpg"
-    },
-    {
-      "title": "사람사는세상 노무현재단 '깨어있는 시선: 2026 청년 연구논문 공모전'",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202604010070",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "06.30",
-      "host": "사람사는세상 노무현재단",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604011438424561584.jpg"
-    },
-    {
-      "title": "2026 춘계통합학술대회 대학생 ERP 아이디어 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603300061",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.21",
-      "host": "한국경영정보학회, 영림원소프트랩",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603301512103349460.png"
-    },
-    {
-      "title": "2026 관광데이터 활용 공모전(웹ㆍ앱 개발)",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603300029",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.06",
-      "host": "한국관광공사",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603301333468221652.png"
-    },
-    {
-      "title": "[한국건강형평성학회] 2026년 봄학술대회 발표모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230010",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.08",
-      "host": "한국건강형평성학회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
-    },
-    {
-      "title": "아두이노 우노 Q 및 앱 랩 미래 발명 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603200013",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "08.31",
-      "host": "아두이노, 퀄컴테크날러지스, 엣지 임펄스",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603251805592987054.jpg"
-    },
-    {
-      "title": "2026 「산림행정, AI활용 어디까지」공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603190069",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.20",
-      "host": "산림교육원",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603251622449298457.jpg"
-    },
-    {
-      "title": "2026 <도핑방지 논문 공모전>",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603190060",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.15",
-      "host": "한국도핑방지위원회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603251611522281063.png"
-    },
-    {
-      "title": "Verse8 × YGG Play | Casual Degen Game Hackathon",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603240052",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.17",
-      "host": "Verse8 × YGG Play",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603241647267558038.jpg"
-    },
-    {
-      "title": "「2026년 평화나눔 청년 및 연구자」논문 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603190008",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.17",
-      "host": "평화나눔연구소",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603241557471394107.jpg"
-    },
-    {
-      "title": "2026 해커스 장학생 모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230074",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.31",
-      "host": "해커스교육그룹",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603231713046597287.jpg"
-    },
-    {
-      "title": "2026년 감사나눔학술대회 발표 논문 공모",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603180041",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.18",
-      "host": "사단법인 행복나눔",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603232112170732504.png"
-    },
-    {
-      "title": "2026 전국민 인공지능(AI) 창작 경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230018",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "06.30",
-      "host": "국립광주과학관",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604030918009696078.png"
-    },
-    {
-      "title": "2026 연세대학교 항공우주전략연구원 우주항공 기술 및 정책/전략 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603170055",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.27",
-      "host": "연세대학교 항공우주전략연구원 ASTI",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603230110074023316.png"
-    },
-    {
-      "title": "2026 부산청소년 프레젠테이션 챌린지",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603160070",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.10",
-      "host": "부산광역시, 국제신문",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
-    },
-    {
-      "title": "2026 핵테온 세종 국제 대학생 사이버보안 경진대회&AI·사이버보안 콘퍼런스",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603200072",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "04.22",
-      "host": "세종특별자치시, 국가정보원",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603201802380757193.jpg"
-    },
-    {
-      "title": "[한국데이터정보과학회] 2026년 춘계학술논문발표회 및 대학원생논문경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603160021",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "05.04",
-      "host": "한국데이터정보과학회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
-    },
-    {
       "title": "2026년「사회연대경제 연구 공모전」",
       "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603050071",
       "source": "콘테스트코리아",
@@ -823,6 +363,196 @@
       "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602241636148325720.PNG"
     },
     {
+      "title": "제1회 실감형콘텐츠(AR/VR) 민간기능경기대회",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230078",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.26",
+      "host": "한국정보기술진흥원",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603231910507850412.png"
+    },
+    {
+      "title": "AI 기능 직접 만든다 | 서비스 문제 해결 개발 공모전",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202604020038",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.19",
+      "host": "어치브모먼트",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604021409465741309.png"
+    },
+    {
+      "title": "전국민 AI 경진대회 - 인공지능 루키 대회",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603280004",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "05.08",
+      "host": "과학기술정보통신부",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604021720505317525.jpg"
+    },
+    {
+      "title": "제4회 전국 AI 영어 스피치 경진대회",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202604010074",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "05.07",
+      "host": "양천구청",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604011506170107965.jpg"
+    },
+    {
+      "title": "사람사는세상 노무현재단 '깨어있는 시선: 2026 청년 연구논문 공모전'",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202604010070",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "06.30",
+      "host": "사람사는세상 노무현재단",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604011438424561584.jpg"
+    },
+    {
+      "title": "2026 춘계통합학술대회 대학생 ERP 아이디어 공모전",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603300061",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.21",
+      "host": "한국경영정보학회, 영림원소프트랩",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603301512103349460.png"
+    },
+    {
+      "title": "2026 관광데이터 활용 공모전(웹ㆍ앱 개발)",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603300029",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "05.06",
+      "host": "한국관광공사",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603301333468221652.png"
+    },
+    {
+      "title": "[한국건강형평성학회] 2026년 봄학술대회 발표모집",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230010",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.08",
+      "host": "한국건강형평성학회",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
+    },
+    {
+      "title": "2026 「산림행정, AI활용 어디까지」공모전",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603190069",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.20",
+      "host": "산림교육원",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603251622449298457.jpg"
+    },
+    {
+      "title": "2026 <도핑방지 논문 공모전>",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603190060",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.15",
+      "host": "한국도핑방지위원회",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603251611522281063.png"
+    },
+    {
+      "title": "Verse8 × YGG Play | Casual Degen Game Hackathon",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603240052",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.17",
+      "host": "Verse8 × YGG Play",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603241647267558038.jpg"
+    },
+    {
+      "title": "「2026년 평화나눔 청년 및 연구자」논문 공모",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603190008",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.17",
+      "host": "평화나눔연구소",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603241557471394107.jpg"
+    },
+    {
+      "title": "2026 해커스 장학생 모집",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230074",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "05.31",
+      "host": "해커스교육그룹",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603231713046597287.jpg"
+    },
+    {
+      "title": "2026년 감사나눔학술대회 발표 논문 공모",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603180041",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.18",
+      "host": "사단법인 행복나눔",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603232112170732504.png"
+    },
+    {
+      "title": "2026 전국민 인공지능(AI) 창작 경진대회",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603230018",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "06.30",
+      "host": "국립광주과학관",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202604030918009696078.png"
+    },
+    {
+      "title": "2026 연세대학교 항공우주전략연구원 우주항공 기술 및 정책/전략 공모전",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603170055",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.27",
+      "host": "연세대학교 항공우주전략연구원 ASTI",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603230110074023316.png"
+    },
+    {
+      "title": "2026 부산청소년 프레젠테이션 챌린지",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603160070",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "05.10",
+      "host": "부산광역시, 국제신문",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
+    },
+    {
+      "title": "2026 핵테온 세종 국제 대학생 사이버보안 경진대회&AI·사이버보안 콘퍼런스",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603200072",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "04.22",
+      "host": "세종특별자치시, 국가정보원",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202603201802380757193.jpg"
+    },
+    {
+      "title": "[한국데이터정보과학회] 2026년 춘계학술논문발표회 및 대학원생논문경진대회",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202603160021",
+      "source": "콘테스트코리아",
+      "category": "학문•과학•IT",
+      "deadline": "05.04",
+      "host": "한국데이터정보과학회",
+      "prize": "",
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
+    },
+    {
       "title": "제 7회 법학경시대회",
       "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202601140010",
       "source": "콘테스트코리아",
@@ -831,16 +561,6 @@
       "host": "법률사무소 선율",
       "prize": "",
       "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202601141131081691857.jpg"
-    },
-    {
-      "title": "2026 GSA 영어 말하기 대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202601080001",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "08.15",
-      "host": "글로벌스피치협회(GSA)",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202601080751258421437.jpg"
     },
     {
       "title": "2026 옵티미스트 코리아 영어 말하기 대회",
@@ -863,234 +583,54 @@
       "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202601061736304714761.png"
     },
     {
-      "title": "해양수산 분야 AI 활용 연구 경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511120050",
+      "title": "2026 서울청년패널조사 청년논문 공모전",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602100049",
       "source": "콘테스트코리아",
       "category": "학문•과학•IT",
-      "deadline": "12.05",
-      "host": "한국해양수산개발원",
+      "deadline": "04.10",
+      "host": "서울연구원",
       "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511171331500260672.jpg"
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602231017320047603.jpg"
     },
     {
-      "title": "제5회 AI & 데이터사이언스 경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511060006",
+      "title": "제1회 청소년건강패널조사 원시자료 활용 경진대회 및 학술행사",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602200045",
       "source": "콘테스트코리아",
       "category": "학문•과학•IT",
-      "deadline": "11.16",
-      "host": "KAIST",
+      "deadline": "05.31",
+      "host": "질병관리청",
       "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511111528564021739.jpg"
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602201401330358061.jpg"
     },
     {
-      "title": "AI 라이프 솔루션 챌린지",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511040067",
+      "title": "「통일과 법률」 제66호 원고 모집",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602100071",
       "source": "콘테스트코리아",
       "category": "학문•과학•IT",
-      "deadline": "12.02",
-      "host": "한국산업기술기획평가원",
+      "deadline": "04.05",
+      "host": "법무부",
       "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511042229407947048.png"
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202602181427344757366.jpg"
     },
     {
-      "title": "한국체육산업개발(주) 민관데이터 융합·활용 경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510300011",
+      "title": "한국연구재단 등재학술지 『항도부산』 제52호 원고모집",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602030041",
       "source": "콘테스트코리아",
       "category": "학문•과학•IT",
-      "deadline": "12.05",
-      "host": "한국체육산업개발(주)",
+      "deadline": "04.30",
+      "host": "부산광역시",
       "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511041431366460027.jpg"
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
     },
     {
-      "title": "Blaybus 제2회 실전 서비스 기획 공모전 | 신규 기능 제안 1pager",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202511030002",
+      "title": "WAIFC Young Academic Award 2026 논문 공모",
+      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202602030010",
       "source": "콘테스트코리아",
       "category": "학문•과학•IT",
-      "deadline": "11.16",
-      "host": "어치브모먼트",
+      "deadline": "04.30",
+      "host": "부산국제금융진흥원",
       "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511031042237490672.png"
-    },
-    {
-      "title": "제3회 초·중·고 학생문화경진대회(제2회 AI 챗 GPT경진대회)",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510290052",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.15",
-      "host": "한국학원총연합회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202511251628517768246.png"
-    },
-    {
-      "title": "KAIST 망한과제 자랑대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510270034",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "10.31",
-      "host": "KAIST",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510271520498452256.PNG"
-    },
-    {
-      "title": "AI NoCode·MCP Hackathon 시즌2",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510270002",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.16",
-      "host": "과학기술정보통신부",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510271110513801635.jpg"
-    },
-    {
-      "title": "제 14회 국립국악원 학술상·평론상 원고 모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202509260041",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "10.31",
-      "host": "국립국악원",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510231746545410330.png"
-    },
-    {
-      "title": "HR직무 10일 실무경험 | 글로벌 인재 채용 전략 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510230056",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.09",
-      "host": "어치브모먼트",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510231855278196211.png"
-    },
-    {
-      "title": "<제7회 TS 보안 허점을 찾아라!> 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510160053",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "10.24",
-      "host": "한국교통안전공단",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510212250512996168.jpg"
-    },
-    {
-      "title": "제30회 도시연구세미나 공모전 – 도시와 산업정책",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510210047",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.31",
-      "host": "인천연구원 학술지 편집위원회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510211535522785672.png"
-    },
-    {
-      "title": "제17회 한국의료패널 학술대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510160036",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "10.24",
-      "host": "국민건강보험, 한국보건사회연구소",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510211336489314983.jpg"
-    },
-    {
-      "title": "서울시민 먹거리조사 활용 우수 논문(논문초록) 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510150077",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.20",
-      "host": "서울시",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510211304541720593.png"
-    },
-    {
-      "title": "루키 게임 콘테스트",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510210004",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.30",
-      "host": "게임핑(인디드라이브)",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510211104518736338.jpg"
-    },
-    {
-      "title": "제7회 청소년 글로벌 환경 스피치 대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510200007",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.07",
-      "host": "(사)한국미래환경협회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510201914543405419.png"
-    },
-    {
-      "title": "2026 전국 대학생 자작 미래자동차 경진대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510200047",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.21",
-      "host": "영남대학교",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510210905256905726.png"
-    },
-    {
-      "title": "제1회 WATER KOREA 대학(원)생 물 연구 논문 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510110019",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "12.15",
-      "host": "한국상하수도협회",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510161225571912140.jpg"
-    },
-    {
-      "title": "제 3회 언택트 중국어 한시 낭송대회",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510130063",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.29",
-      "host": "대교랭귀지스퀘어 광주교육국",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510131836441096873.png"
-    },
-    {
-      "title": "[충청북도교육청] ‘미래의 나를 상상해요! AI 그래픽 공모전’",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510140097",
-      "source": "콘테스트코리아",
-      "category": "미술•디자인•웹툰",
-      "deadline": "11.12",
-      "host": "충청북도교육청",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510211544245481843.png"
-    },
-    {
-      "title": "크리에이티브 수영 해커톤",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510130032",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.16",
-      "host": "수영구청",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510141450404922737.jpg"
-    },
-    {
-      "title": "아동권리주간기념 「퀴즈로 알아보는 전국 아동권리골든벨」 참여자 모집",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510020028",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "10.31",
-      "host": "시흥시",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510131454500759267.jpg"
-    },
-    {
-      "title": "제1회 인공지능 활용 우수사례 공모전",
-      "url": "https://www.contestkorea.com/sub/view.php?int_gbn=1&Txt_bcode=030310001&str_no=202510100022",
-      "source": "콘테스트코리아",
-      "category": "학문•과학•IT",
-      "deadline": "11.05",
-      "host": "시립노원청소년미래진로센터",
-      "prize": "",
-      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/202510101554295257748.png"
+      "thumbnail": "https://www.contestkorea.com/admincenter/files/meet/category_01_학습문예_콘테스트코리아 - 대한민국 누구나 함께하는 대회정보 포털[3].jpg"
     }
   ]
 }
