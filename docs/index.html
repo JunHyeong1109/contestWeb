@@ -476,30 +476,36 @@
     return new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   }
 
-  // 만료 여부 판별
-  function isExpired(deadline) {
-    if (!deadline) return false;
+  // MM.DD 파싱 (오늘 이전이면 내년 적용)
+  function parseMmDd(mm, dd, today) {
+    let d = new Date(today.getFullYear(), mm - 1, dd);
+    if (d < today) d = new Date(today.getFullYear() + 1, mm - 1, dd);
+    return d;
+  }
+
+  // deadline 문자열을 Date로 변환
+  function parseDeadline(deadline) {
+    if (!deadline) return null;
     const today = todayKST();
     let m = deadline.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
-    if (m) return new Date(+m[1], +m[2] - 1, +m[3]) < today;
+    if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
     m = deadline.match(/^(\d{1,2})[.\-\/](\d{2})$/);
-    if (m) return new Date(today.getFullYear(), +m[1] - 1, +m[2]) < today;
-    return false;
+    if (m) return parseMmDd(+m[1], +m[2], today);
+    return null;
+  }
+
+  // 만료 여부 판별
+  function isExpired(deadline) {
+    const d = parseDeadline(deadline);
+    if (!d) return false;
+    return d < todayKST();
   }
 
   // D-day 계산
   function daysLeft(deadline) {
-    if (!deadline) return null;
-    const today = todayKST();
-    let m = deadline.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
-    let d;
-    if (m) d = new Date(+m[1], +m[2] - 1, +m[3]);
-    else {
-      m = deadline.match(/^(\d{1,2})[.\-\/](\d{2})$/);
-      if (m) d = new Date(today.getFullYear(), +m[1] - 1, +m[2]);
-      else return null;
-    }
-    return Math.round((d - today) / 86400000);
+    const d = parseDeadline(deadline);
+    if (!d) return null;
+    return Math.round((d - todayKST()) / 86400000);
   }
 
   // 마감 칩 HTML
@@ -539,13 +545,7 @@
 
   // 마감일 Date 변환
   function deadlineToDate(deadline) {
-    if (!deadline) return new Date(9999, 0, 1);
-    const today = todayKST();
-    let m = deadline.match(/(\d{4})[.\-\/](\d{1,2})[.\-\/](\d{1,2})/);
-    if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
-    m = deadline.match(/^(\d{1,2})[.\-\/](\d{2})$/);
-    if (m) return new Date(today.getFullYear(), +m[1] - 1, +m[2]);
-    return new Date(9999, 0, 1);
+    return parseDeadline(deadline) || new Date(9999, 0, 1);
   }
 
   // 필터·정렬 적용
