@@ -44,7 +44,7 @@ def _is_expired(deadline_text: str) -> bool:
 # 제목에 이전 연도 포함 여부
 def _has_past_year(title: str) -> bool:
     current_year = _today_kst().year
-    years = re.findall(r'\b(20\d{2})\b', title)
+    years = re.findall(r'(20\d{2})', title)
     return any(int(y) < current_year for y in years)
 
 
