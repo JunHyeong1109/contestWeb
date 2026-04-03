@@ -48,15 +48,15 @@ def _has_past_year(title: str) -> bool:
     return any(int(y) < current_year for y in years)
 
 
-# IT 관련 키워드
+# IT/SW/AI/IoT 핵심 키워드
 IT_KEYWORDS = [
-    "IT", "SW", "AI", "소프트웨어", "프로그래밍", "코딩", "개발",
-    "컴퓨터", "알고리즘", "데이터", "빅데이터", "클라우드", "인공지능",
-    "머신러닝", "딥러닝", "웹", "앱", "모바일", "보안", "사이버",
-    "해킹", "블록체인", "IoT", "핀테크", "디지털", "스마트", "게임",
-    "네트워크", "데이터베이스", "임베디드", "로봇", "자율주행",
-    "메타버스", "AR", "VR", "챗봇", "자연어", "컴퓨터공학", "정보보안",
-    "정보통신", "전산", "ICT",
+    "IT", "SW", "AI", "IoT", "ICT",
+    "소프트웨어", "프로그래밍", "코딩", "개발", "해커톤",
+    "인공지능", "머신러닝", "딥러닝", "데이터", "빅데이터", "클라우드",
+    "알고리즘", "보안", "사이버", "해킹", "정보보안",
+    "웹", "앱", "모바일", "임베디드", "로봇", "자율주행",
+    "블록체인", "핀테크", "챗봇", "자연어처리",
+    "컴퓨터", "컴퓨터공학", "정보통신", "전산",
 ]
 
 
@@ -179,17 +179,9 @@ def _fetch_thumbnail(url: str) -> str:
     return src if src.startswith("http") else BASE_CK + src
 
 
-def scrape_contestkorea_contest(pages: int = 5) -> list[dict]:
-    urls_template = [
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_bcode=030310001&page={{page}}",
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=IT&page={{page}}",
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=SW&page={{page}}",
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=AI&page={{page}}",
-        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_sGn=1&Txt_key=all&Txt_word=%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4&page={{page}}",
-    ]
+def scrape_contestkorea_contest(pages: int = 10) -> list[dict]:
     all_urls = [
-        tmpl.format(page=page)
-        for tmpl in urls_template
+        f"{BASE_CK}/sub/list.php?displayrow=20&int_gbn=1&Txt_bcode=030310001&page={page}"
         for page in range(1, pages + 1)
     ]
 
