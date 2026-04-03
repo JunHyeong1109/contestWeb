@@ -27,10 +27,7 @@ def _parse_deadline_date(text: str):
     if m:
         today = _today_kst()
         try:
-            d = date(today.year, int(m.group(1)), int(m.group(2)))
-            if d < today:
-                d = date(today.year + 1, int(m.group(1)), int(m.group(2)))
-            return d
+            return date(today.year, int(m.group(1)), int(m.group(2)))
         except ValueError:
             pass
 
